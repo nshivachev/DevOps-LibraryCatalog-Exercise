@@ -20,10 +20,6 @@ jobs:
         cache: 'npm'
     - name: Install dependencies
       run: npm install
-    - name: Run Front End
-      run: npm run start-fe
-    - name: Run Back End
-      run: npm run start-be
     - name: Run Security Tests
       run: npm run test-npm-security
 
@@ -40,9 +36,5 @@ jobs:
         cache: 'npm'
     - name: Install dependencies
       run: npm install
-    - name: Run Front End
-      run: npm run start-fe
-    - name: Run Back End
-      run: npm run start-be
     - name: Run UI tests
       run: npm run test:ui
