@@ -1,0 +1,48 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  npm_security_tests:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout of the repo
+      uses: actions/checkout@v4
+    - name: Use Node.js 20
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+        cache: 'npm'
+    - name: Install dependencies
+      run: npm install
+    - name: Run Front End
+      run: npm run start-fe
+    - name: Run Back End
+      run: npm run start-be
+    - name: Run Security Tests
+      run: npm run test-npm-security
+
+  ui_tests:
+    runs-on: ubuntu-latest
+    needs: npm_security_tests
+    steps:
+    - name: Checkout of the repo
+      uses: actions/checkout@v4
+    - name: Use Node.js 20
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+        cache: 'npm'
+    - name: Install dependencies
+      run: npm install
+    - name: Run Front End
+      run: npm run start-fe
+    - name: Run Back End
+      run: npm run start-be
+    - name: Run UI tests
+      run: npm run test:ui
