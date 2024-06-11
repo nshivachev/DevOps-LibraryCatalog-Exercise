@@ -21,6 +21,8 @@ jobs:
         cache: 'npm'
     - name: Install dependencies
       run: npm install
+    - name: Replace the config settings
+      run: echo "export const settings = { host:\"http://localhost:3030\" };" > src/config.js
     - name: Start Back End
       run: npm start-be &
     - name: Sleep for 5 seconds
@@ -67,6 +69,8 @@ jobs:
   #       cache: 'npm'
   #   - name: Install dependencies
   #     run: npm install
+  #   - name: Replace the config settings
+  #     run: echo "export const settings = { host:\"http://localhost:3000\" };" > src/config.js
   #   - name: Start Back End
   #     run: npm start-be &
   #   - name: Sleep for 5 seconds
