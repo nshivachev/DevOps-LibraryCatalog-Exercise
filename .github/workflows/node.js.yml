@@ -20,6 +20,16 @@ jobs:
         cache: 'npm'
     - name: Install dependencies
       run: npm install
+    - name: Start Front End
+      run: npm start-fe &
+    - name: Sleep for 5 seconds
+      run: sleep 5
+    - name: Start Back End
+      run: npm start-be &
+    - name: Sleep for 5 seconds
+      run: sleep 5
+    - name: Install Playwright browsers
+      run: npx playwright install
     - name: Run Security Tests
       run: npm run test-npm-security
 
@@ -36,5 +46,15 @@ jobs:
         cache: 'npm'
     - name: Install dependencies
       run: npm install
+    - name: Start Front End
+      run: npm start-fe &
+    - name: Sleep for 5 seconds
+      run: sleep 5
+    - name: Start Back End
+      run: npm start-be &
+    - name: Sleep for 5 seconds
+      run: sleep 5
+    - name: Install Playwright browsers
+      run: npx playwright install
     - name: Run UI tests
       run: npm run test:ui
