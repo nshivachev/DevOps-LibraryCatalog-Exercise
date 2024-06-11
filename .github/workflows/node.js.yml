@@ -38,6 +38,7 @@ jobs:
       
   deploy_be:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     needs: npm_security_tests
     steps:
     - name: Deploy on production
@@ -48,6 +49,7 @@ jobs:
 
   deploy_fe:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     needs: deploy_be
     steps:
     - name: Deploy on production
